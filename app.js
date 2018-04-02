@@ -6,6 +6,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var starWars = require('./routes/starwars');
 var sweets = require('./routes/sweets');
+var tech = require('./routes/tech');
+var cats = require('./routes/cats');
 
 var app = express();
 
@@ -18,6 +20,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/starwars', starWars);
 app.use('/sweets', sweets);
+app.use('/tech', tech);
+app.use('/cats', cats);
 
 
 module.exports = app;

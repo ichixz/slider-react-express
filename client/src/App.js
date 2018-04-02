@@ -27,11 +27,16 @@ class App extends Component {
   }
 
   renderScreenChoosePath() {
-    return <ContainerStyle><Starwarsbox onClick={() => this.onClickHandler('starwars')} /><Sweetsbox onClick={() => this.onClickHandler('sweets')}/><Technologybox /><Naturebox /></ContainerStyle>
+    return <ContainerStyle>
+      <Starwarsbox onClick={() => this.onClickHandler('starwars')} />
+      <Sweetsbox onClick={() => this.onClickHandler('sweets')}/>
+      <Technologybox onClick={() => this.onClickHandler('tech')}/>
+      <Naturebox onClick={() => this.onClickHandler('cats')}/>
+    </ContainerStyle>
   }
 
   renderSlideshow() {
-    return <Slider images={this.state.images}/>
+    return <Slider images={this.state.images} />
   }
 
   render() {

@@ -12,7 +12,7 @@ export default class Slider extends Component {
             index: 0,
             actualImage: props.images[0]
         }
-        console.log(this.state.actualImage);
+        console.log(props);
 
         this.nextimage = this.nextimage.bind(this);
     }
@@ -28,6 +28,15 @@ export default class Slider extends Component {
         }
         this.setState({
             index: this.state.index += 1
+        })
+    }
+
+    previmage() {
+        if(this.state.index === 0) {
+            this.state.index = (this.state.images.length - 1);
+        }
+        this.setState({
+            index: this.state.index -= 1
         })
     }
 
@@ -49,7 +58,9 @@ export default class Slider extends Component {
                             </Img>
                         </CSSTransition>
                 </TransitionGroup>
-                <ButtonNext onClick={() => this.nextimage()}>></ButtonNext>
+                <ButtonNext onClick={() => this.nextimage()}>{'>'}</ButtonNext>
+                <ButtonPrev onClick={() => this.previmage()}>{'<'}</ButtonPrev>
+                <ButtonBack onClick={() => window.location.reload()}>{'<<'}</ButtonBack>
             </Container>
         )
     }
@@ -62,15 +73,24 @@ const Container = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
 `
-const ButtonNext = styled.span`
+const Button = styled.span`
     position: absolute;
     color: white;
     top: 50%;
-    right: 0px;
     font-size: 60px;
 
     &:hover{
         cursor: pointer;
         opacity: 0.7;
     }
+`
+const ButtonNext = Button.extend`
+    right: 0px;
+`
+const ButtonPrev = Button.extend`
+    left: 0px;
+`
+const ButtonBack = Button.extend`
+    top: 0px;
+    left: 0px;
 `
